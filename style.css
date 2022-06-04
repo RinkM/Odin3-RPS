@@ -1,0 +1,53 @@
+/* 
+Possible Fonts:
+    font-family: 'Audiowide', serif;
+    font-family: 'Black Ops One', serif;
+    font-family: 'Electrolize', sans-serif;
+    font-family: 'Exo', sans-serif;
+    font-family: 'Press Start 2P', serif;
+
+*/
+
+body{
+    background-color: black;
+    color: #6cbbfa;
+}
+
+.robotVoice{
+    font-family: 'Audiowide', serif;
+    font-size: 22px;
+    color: #9b5cc9;
+}
+
+
+div{
+    font-family: "Raleway", sans-serif;
+    border: 1px solid steelblue;
+    font-family: 'Exo', sans-serif;
+    font-size: 22px;
+    /* margin:5px;  */
+}
+
+.prologue {display:flex;
+    flex-direction: column;
+
+}
+
+.choice {
+    width : 250px ;
+
+}
+.compAvatar{
+    width:250px;
+}
+
+
+.gamespace{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.gamespace__leftColumn{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,26 @@
+<!--Ideas : 
+    show previous throws. 
+    change things after player wins x matches 
+    ex : computer starts to say things. call shots?
+    ex: power up RPS.   
+    ex: undefeated streak?
+    how to make it grow?  
+    how to store results? they're only numbers....
+    rock -> boulder, rocket launcher  Scissors to shotgun paper->plastic, cardboard, 
+    downgrades : dull scissors. kid scissors. rock. pebble
+    kinda dumb, but defeat bosses?
+ -->
+
+ 
+How does it work?
+Like game start.  open page : Will you stand up to support the human race?    Button YES
+Prologue is a slide show.  pictures with text. about 4 slides.
+game starts : 
+
+screen shows : 
+Header area : Total enslaved humans , Total Free humans : , human wins, computer wins
+also shows what the computer has been throwing - like a casino
+
+Body : 
+
+
