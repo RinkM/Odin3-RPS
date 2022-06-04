@@ -20,7 +20,7 @@ body{
 }
 
 
-div{
+div{margin:2px;
     font-family: "Raleway", sans-serif;
     border: 1px solid steelblue;
     font-family: 'Exo', sans-serif;
@@ -28,17 +28,61 @@ div{
     /* margin:5px;  */
 }
 
+button{margin: 10px;
+    background-color: #6cbbfa;
+    color:black;
+    /* border:0; */
+    text-align: center;
+    font-family: 'Exo', sans-serif;
+    font-size:22px;
+    border-radius:5px;
+    border-color: #9b5cc9;
+    text-shadow: 1px 1px 1px #9b5cc9;
+
+}
+button:hover{
+    filter:brightness(120%)
+}
+
+button:active{
+    filter:brightness(80%)
+}
+
 .prologue {display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin:5px 0px;
+    text-align: center;
+    width:100%;
+}
+
+
+.prologue__text{
+width:95%;
 
 }
 
+.prologue__img{
+    width: 300px;
+    filter:invert(100)
+    
+
+}
+
+.prologue--textalign{
+    text-align:left;
+}
+
+
 .choice {
     width : 250px ;
+    
 
 }
 .compAvatar{
     width:250px;
+    filter:invert(100)
 }
 
 

@@ -24,3 +24,7 @@ also shows what the computer has been throwing - like a casino
 Body : 
 
 
+
+
+
+rps logic
