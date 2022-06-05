@@ -22,11 +22,62 @@ body{
 
 div{margin:2px;
     font-family: "Raleway", sans-serif;
-    border: 1px solid steelblue;
+    border: 1px solid goldenrod;
     font-family: 'Exo', sans-serif;
     font-size: 22px;
     /* margin:5px;  */
 }
+
+
+.prologue {display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin:5px 0px;
+    text-align: center;
+    width:100%;
+    
+}
+
+
+.prologue__text{
+width:95%;
+/* display: flex;
+flex-direction: column;
+align-items: center; */
+
+}
+
+.prologue__img{
+    width: 300px;
+    filter:invert(100);
+    border-radius: 48% ;
+    
+
+}
+
+.choice {
+    width : 250px ;
+    
+
+}
+.compAvatar{
+    width:250px;
+    filter:invert(100)
+}
+
+
+.gamespace__main{
+    display:flex;
+    justify-content: center;
+}
+
+.gamespace__leftColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 button{margin: 10px;
     background-color: #6cbbfa;
@@ -46,54 +97,4 @@ button:hover{
 
 button:active{
     filter:brightness(80%)
-}
-
-.prologue {display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    margin:5px 0px;
-    text-align: center;
-    width:100%;
-    
-}
-
-
-.prologue__text{
-width:95%;
-
-}
-
-.prologue__img{
-    width: 300px;
-    filter:invert(100);
-    border-radius: 48% ;
-    
-
-}
-
-.prologue--textalign{
-    text-align:left;
-}
-
-
-.choice {
-    width : 250px ;
-    
-
-}
-.compAvatar{
-    width:250px;
-    filter:invert(100)
-}
-
-
-.gamespace{
-    display:flex;
-    justify-content: space-evenly;
-}
-
-.gamespace__leftColumn{
-    display: flex;
-    flex-direction: column;
 }

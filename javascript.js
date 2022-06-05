@@ -1,3 +1,26 @@
+// EVERYTHING RELIES ON ONE BUTTON.
+// on button press
+// make computer choice. update variable.
+// add 1 to human counters.
+// update humanchoice variable.
+// narrate the players' moves
+// compare choices and determine winner.
+// narrate game outcome.
+// update scoreboard.
+// computer retort.
+// update computer moves list. 
+// 
+// 
+// 
+
+// scoreboard text : 
+// The Last Free Human chose ${Rock}
+// The Super Computers chose ${Paper}
+//     Paper covers rock.
+//     Rock smashes scissors.
+//     Scissors cut paper.
+// The ${Player} won.
+
 
 
 
@@ -11,7 +34,7 @@
 
 let computerRandChoice = Math.floor(Math.random()*3);
 let humanChoice = 1;
-
+let rps = [Rock, Paper, Scissors];
 
 let computerHistory = [];
 let countRock = 0;
