@@ -52,22 +52,11 @@ align-items: center; */
     width: 300px;
     filter:invert(100);
     border-radius: 48% ;
-    visibility:hidden ;
+    /* visibility:hidden ; */
 
 }
 
-.choice {
-    width : 250px ;
-    
-
-}
-.compAvatar{
-    width:250px;
-    filter:invert(100)
-}
-
-
-.gamespace__main{
+.gamespace__mainDiv{
     display:flex;
     justify-content: center;
 }
@@ -77,6 +66,11 @@ align-items: center; */
     flex-direction: column;
 }
 
+
+.compAvatar{
+    width:250px;
+    filter:invert(100)
+}
 
 
 button{margin: 10px;

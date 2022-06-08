@@ -68,37 +68,37 @@
 
 
 
-    <div class="container gamespace">
+    <div class="container gamespace__body">
         <header class = "gamespace__header">
             <div class = "scoreboard">
-                <div>Humans Enslaved : 10,722,171,375 </div>
-                <div>Humans Saved : 3</div>
-                <div>Last 5 Computer Plays : Rock, Paper, Paper, Scissors, Rock, </div>
+                <div class = "totalEnslaved" >Humans Enslaved : 10,722,171,375 </div>
+                <div class = "totalSaved">Humans Saved : 3</div>
+                <div class = compHistory>Last 5 Computer Plays : Rock, Paper, Paper, Scissors, Rock, </div>
             </div>
         </header>
-        <div class = "gamespace__main">
-            <div class = "container gamespace__leftColumn">
+        <div class = "gamespace__mainDiv">
+            <div class = "container leftColumn">
                 <h1> Choose Your Weapon </h1>
-                <button type = "button">Rock</button> $== button0
-                <button type = "button">Paper</button> $== button1
-                <button type = "button">Scissors</button> $== button2
+                <button class = "rockButton" type = "button">Rock</button> 
+                <button class = "paperButton" type = "button">Paper</button>
+                <button class = "scissorsButton" type = "button">Scissors</button>
             </div>
 
-            <div class = "container gamespace__centerColumn">
-                <div class = gamespace__summary>
-                    <h3 class="gamespace__humSum">The Last Free Human chose Rock</h3>
-                    <h3 class="gamespace__compSum">The Super Computers chose Paper</h3>
-                    <h3 class="gamespace__gameResult">Paper covers rock. The Super Computers won.</h3>    
+            <div class = "container centerColumn">
+                <div class = summary>
+                    <h3 class="summary__humSum">The Last Free Human chose Rock</h3>
+                    <h3 class="summary__compSum">The Super Computers chose Paper</h3>
+                    <h3 class="summary__gameSum">Paper covers rock. The Super Computers won.</h3>    
                 </div>
-                <div>Score
-                    <div>Last Free Human : 1</div>
-                    <div>Super Computers : 1</div>
+                <div class = "scoreboard">Scoreboard
+                    <div class = "scoreboard__humanScore">Last Free Human : 0</div>
+                    <div class = "scoreboard__compScore">Super Computers : 0</div>
                 </div>
             </div>
 
             <div class = "container gamespace__rightcolumn">
                 <img class="compAvatar" src="images/supercomp.jpeg" alt="The Super Computers">
-                <div class = "RobotVoice">"Our algorithm says Rocks can be thrown through paper.  This outcome makes no sense."
+                <div class = "robotRebuke RobotVoice">"Our algorithm says Rocks can be thrown through paper.  This outcome makes no sense."
                     
                     
                     <!-- <p>"Humans are disgusting. With your gross, sticky hands and dumb, witless expressions."</p>
@@ -121,6 +121,6 @@
 
 </body>
 
-
+<script src =javascript.js ></script>
 
 </html>
