@@ -106,3 +106,4 @@ while (computerWins <= 3 || humanWins <= 3){
 
 }
 
+Math.floor
