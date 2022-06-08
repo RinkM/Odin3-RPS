@@ -22,7 +22,11 @@
 // The ${Player} won.
 
 
+//The DOM
 
+// document.getElementsByClassName("gamespace__compSum")[0].textContent
+// can select directaly by class name. Use the [0] array locatiniio.  change the text SVGTextContentElement.LENGTHADJUST_SPACING
+// learn to spell..
 
 // random number 0-3
 // console.log(Math.floor(Math.random()*3));
