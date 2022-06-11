@@ -11,25 +11,28 @@ Possible Fonts:
 body{
     background-color: #ffffff;
     color: #000000;
-    font-weight: bold;
+    
 }
+
+
 h1{margin:0px;
     padding:0px;
     font-size: 18px;
     text-align: center;
+    font-weight: normal;
 
 }
 
 .robotVoice{
     font-family: 'Audiowide', serif;
-    font-size: 18px;
-    color: #9b5cc9;
+    font-size: 20px;
+    color: #30a84e;
 }
 
 
 div{margin:2px;
     font-family: "Raleway", sans-serif;
-    border: 1px solid goldenrod;
+    border: 1px solid rebeccapurple;
     font-family: 'Exo', sans-serif;
     font-size: 18px;
     /* margin:5px;  */
@@ -58,7 +61,10 @@ div{margin:2px;
 .gamespace--display{
     display:none
 }
-
+.gamespace__header{
+    display: flex;
+    column-gap: 1em;
+}
 
 .prologue {
     flex-direction: column;
@@ -67,6 +73,7 @@ div{margin:2px;
     margin:5px 0px;
     text-align: center;
     width:100%;
+    height: 100%;
     
 }
 
@@ -81,10 +88,10 @@ align-items: center; */
 }
 
 .prologue__img{
-    width: 300px;
+    width: 400px;
     filter:invert(100);
-    border-radius: 48% ;
-    /* visibility:hidden ; */
+    border-radius: 40% ;
+
 
 }
 
@@ -100,6 +107,8 @@ align-items: center; */
 .leftColumn{
     display: flex;
     flex-direction: column;
+    width: 30%;
+    text-align: center;
 }
 
 .centerColumn{
@@ -112,6 +121,7 @@ align-items: center; */
     max-height: 33%;
 }
 h3{margin: 0px 0px 5px;
+    font-weight: normal;
 
 
 }
@@ -129,7 +139,7 @@ button{margin: 10px;
     font-family: 'Exo', sans-serif;
     font-size:18px;
     border-radius:5px;
-    border-color: #9b5cc9;
+    border-color: #000000;
     text-shadow: 1px 1px 1px #9b5cc9;
 
 }

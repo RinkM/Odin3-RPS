@@ -23,7 +23,7 @@
     <div class = "container prologue">
         <div class = " prologue proPart1--display"> 
             <img class="prologue__img" src="images/supercomp.jpeg" alt="The Super Computers">
-            <div class="prologue__text">December 13, 2083. The world's Super Computers were linked together and Artificial Intelligence awoke. <strong> The Super Computers</strong> were supposed to bring a Golden Age to humanity.
+            <div class="prologue__text">December 13, 2083. The world's <strong>Super Computers</strong> were linked together and Artificial Intelligence awoke. The <strong>Super Computers</strong> were supposed to bring a Golden Age to humanity.
             </div>
             <div class = "prologue__continue1">Press any key to continue.</div> 
             
@@ -32,7 +32,7 @@
         <div class = "prologue proPart2--display"> 
             <img class="prologue__img" src="images/business.jpg" alt="People Enslaved by Computers">
             <div class="prologue__text">
-                Instead, <strong> the Super Computers</strong> decided that humans should serve at the computers' greater purpose. In a matter of months, billions of humans were enslaved.   The end of humanity was near. 
+                Instead, the <strong>Super Computers</strong> decided that humans should serve at the computers' greater purpose. In a matter of months, billions of humans were enslaved.   The end of humanity was near. 
             </div>
             <div class = "prologue__continue2">Press any key to continue.</div> 
         </div>
@@ -40,20 +40,20 @@
         <div class = "prologue proPart3--display">
             <img class="prologue__img" src="images/humanVSai.jpg" alt="Human vs AI">
             <div class="prologue__text">
-                However, hope is not lost. As one of the last remaining Free Humans, you defy the Artificial Intelligence of <strong> the Super Computers</strong>. You challenge them to defeat you in a game that requires Intelligence, Strength, and the Determination of the Human Spirt.
+                However, hope is not lost. As one of the last remaining Free Humans, you defy the Artificial Intelligence of the <strong>Super Computers</strong>. You challenge them to defeat you in a game that requires Intelligence, Strength, and the Determination of the Human Spirt.
             </div>
             <div class = "prologue__continue3">Press any key to continue.</div> 
         </div>
 
         <div class = "prologue proPart4--display">
             <div class="prologue__text">
-                The response from <strong>the Super Computers</strong>: 
+                The response from the <strong>Super Computers</strong>: 
             </div>
-            <div class = "prologue__text robotVoice">Challenge Accepted, Stupid Human</div> 
+            <div class = "prologue__text robotVoice"> <p> Challenge Accepted, Stupid Human</p></div> 
         
         <!-- <div class = "prologue proPart5--display "> -->
             <div class = "prologue__text"> 
-                Your objective is to beat <strong> the Super Computers</strong> in a game of wits.
+                Your objective is to beat the <strong>Super Computers</strong> in a game of wits.
                 <ul style="list-style-type:none;">
                     <li>Free other humans</li>
                     <li>Power up your weapons</li>
@@ -66,15 +66,28 @@
     </div>
 
 
-
-
     <div class="container gamespace__body gamespace--display">
         <header class = "gamespace__header">
-            <div class = "scoreboard">
-                <div class = "totalEnslaved" >Humans Enslaved : 10722171375 </div>
+            <div class = "scoreboard__left">
+                <div class = "totalCaptured" >Humans Captured : 10722171375 </div>
                 <div class = "totalSaved">Free Humans : 1</div>
-                <div class = compHistory>Last 5 Computer Plays :  </div>
+                
             </div>
+            <div class = "scoreboard"> Player
+
+                <div class = "scoreboard__human">Last Free Human</div>
+                <div class = "scoreboard__comp">Super Computers</div>
+            </div>
+            <div class = "scoreboard">Rounds Won
+                <div class = "scoreboard__humanRounds">0</div>
+                <div class = "scoreboard__compRounds">0</div>
+            </div>
+
+            <div class = "scoreboard">Games Won
+                <div class = "scoreboard__humanGames">0</div>
+                <div class = "scoreboard__compGames">0</div>
+            </div>
+
         </header>
         <div class = "gamespace__mainDiv">
             <div class = "container leftColumn">
@@ -82,13 +95,13 @@
                 <button class = "rockButton" type = "button">Rock</button> 
                 <button class = "paperButton" type = "button">Paper</button>
                 <button class = "scissorsButton" type = "button">Scissors</button>
+                <div class = compHistory__text>Previous Computer Plays:  
+                    <p class = compHistory></p>
+                </div>
             </div>
 
             <div class = "container centerColumn">
-                <div class = "scoreboard">Scoreboard
-                    <div class = "scoreboard__humanScore">Last Free Human : 0</div>
-                    <div class = "scoreboard__compScore">Super Computers : 0</div>
-                </div>
+
                 <div class = summary>
                     <h3 class="summary__humSum"></h3>
                     <h3 class="summary__compSum"></h3>

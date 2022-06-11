@@ -23,6 +23,22 @@
 // humans act as hackers. can purchase bonuses. help speed up the game.
 // play in the background.   what's the visual for this?
 
+// Main function. Runs when a button is clicked. 
+// Will break this up.  Right now, just taping it all together. 
+function buttonPress(number){
+    computerTurn();
+    humanChoice = number;
+    humanTracker(humanChoice);
+    updateScoreboard()
+    addWin('computer');
+    humanRounds.textContent = humanRoundWins;
+    compRounds.textContent = compRoundWins;
+    updateHistory();
+    computerResponse();
+}
+
+
+
 
 // Prologue Buttons : 
 const proContinue1 = document.querySelector('.proPart1--display');
@@ -38,12 +54,16 @@ const computerSummary = document.getElementsByClassName("summary__compSum")[0]
 const gameSummary = document.getElementsByClassName("summary__gameSum")[0]
 
 
-const humanScore = document.getElementsByClassName("scoreboard__humanScore")[0]
-const compScore = document.getElementsByClassName("scoreboard__compScore")[0]
+const humanRounds = document.getElementsByClassName("scoreboard__humanRounds")[0]
+const compRounds = document.getElementsByClassName("scoreboard__compRounds")[0]
+const humanGames = document.getElementsByClassName("scoreboard__humanGames")[0]
+const compGames = document.getElementsByClassName("scoreboard__compGames")[0]
+
+
 
 const rebuke = document.getElementsByClassName("robotRebuke")[0]
 
-const totalEnslaved = document.getElementsByClassName("totalEnslaved")[0]
+const totalCaptured = document.getElementsByClassName("totalCaptured")[0]
 const totalSaved = document.getElementsByClassName("totalSaved")[0]
 const compHistory = document.getElementsByClassName("compHistory")[0]
 const rockButton = document.querySelector('.rockButton');
@@ -57,8 +77,8 @@ const scissorsButton = document.querySelector('.scissorsButton');
 // const gameSummary = document.getElementsByClassName("robotRebuke")[0]
 
 let computerRandChoice = Math.floor(Math.random()*3); 
-let computerChoice ;
-let humanChoice ;
+let computerChoice;
+let humanChoice;
 let rps = ["Rock", "Paper", "Scissors"];
 
 // lots of variables and counters. could be held as an object?
@@ -68,23 +88,40 @@ let computerHistory = [];
 let countRock = 0;
 let countPaper = 0;
 let countScissors = 0;
-let humanWins = 0;
-let compWins = 0;
-let ties = 0
-let humanSetWins = 0
-let computerSetWins= 0 
-let enslavedHumans = 10722171375;
+let humanRoundWins = 0;
+let compRoundWins = 0;
+let humanSetWins = 0;
+let computerSetWins= 0;
+let ties = 0;
+let capturedHumans = 10722171375;
 let freeHumans = 1;
-let text
-
+let text;
 
 function updateHistory(){
     text =[]
-    for (item of computerHistory.slice(-5)){
+    for (item of computerHistory.slice(-10)){
         text.push(" "+rps[item])
     }
-    compHistory.textContent = `Super Computer History: ${text}`
+    compHistory.textContent = `${text}`
 }
+
+// 0 = comp win, 1 = human win, 2 = tie game
+let numericalOutcomes = [[
+    2,
+    0,
+    1
+], 
+[
+    1, 
+    2, 
+    0
+],
+[
+    0,
+    1,
+    2
+]]
+
 
 let gameOutcomes = [[
     "tie",
@@ -118,32 +155,35 @@ let gameOutcomeText = [[
     "It's a Tie. No Winner."
 ]]
 
-totalEnslaved.textContent = `Humans Enslaved : ${enslavedHumans}`;
-totalSaved.textContent = `Humans Freed : ${freeHumans}`;
+
+function capturedUpdate(){
+    totalCaptured.textContent = `Humans Captured : ${capturedHumans}`;
+    totalSaved.textContent = `Humans Freed : ${freeHumans}`;
+}
+
+
 
 function saveHumans(number){
-    totalEnslaved - number;
-    totalSaved + number;
+    capturedHumans - number;
+    freeHumans + number;
 }
 
 function loseHumans(number){
-    totalEnslaved + number;
-    totalSaved - number;
+    capturedHumans + number;
+    freeHumans - number;
 }
 
 function addWin (winner){
     switch(winner){
-        case winner == "human":
-            humanWins = humanWins+1
-            saveHuman(1)
-            break;
-        case winner == "computer":
-            compWins = compWins++
-            loseHumans(1)
-            break;
-        case winner == "tie":
-            ties = ties++
-            break;
+        case winner == 0:
+            loseHumans(1);
+            return compRoundWins = ++compRoundWins;
+        case winner == 1:
+            saveHumans(1);
+            return humanRoundWins = humanRoundWins+1;
+        case winner == 2:
+            return ties = ++ties;
+            
     }
 }
 
@@ -155,27 +195,6 @@ function resetCounter(counter){
     return counter = 0;
 }
 
-
-// function trackWins(){
-//     switch(){
-//         case
-//         case
-//         case
-//     }
-// }
-
-// Will break this up.  Right now, just taping it all together. 
-function buttonPress(number){
-    computerTurn();
-    humanChoice = number;
-    humanTracker(humanChoice);
-    updateScoreboard()
-    addWin('computer');
-    humanScore.textContent = `Last Free Human : ${humanWins}`;
-    compScore.textContent = `Super Computers : ${compWins}`;
-    updateHistory();
-    computerResponse();
-}
 
 
 function hideDiv(css){
@@ -200,7 +219,7 @@ proContinue3.addEventListener('click', ()=>{
     revealDiv(".proPart4--display");})
 
 proContinue4.addEventListener('click', ()=>{
-    hideDiv(".proPart4--display");
+    hideDiv(".prologue");
     document.querySelector(".gamespace--display").style.display = "block"})
     // revealDiv(".gamespace--display");})
 
@@ -218,7 +237,7 @@ scissorsButton.addEventListener('click', ()=>{
 function updateScoreboard(){
     humanSummary.textContent = `The Last Free Human chose ${rps[humanChoice]}`;
     computerSummary.textContent = `The Super Computers chose ${rps[computerChoice]}`;
-    gameSummary.textContent =gameOutcomeText[humanChoice][computerChoice];
+    gameSummary.textContent = gameOutcomeText[humanChoice][computerChoice];
 }
 
 // tracks human plays. adds one to correct counter. 
@@ -279,14 +298,14 @@ function computerResponse (){
 
 
 computerRebuke = [
-    "Our algorithm says Rocks can be thrown through paper.  This outcome makes no sense.",
+    "Our algorithm says rocks can be thrown through paper.  This outcome makes no sense.",
     "Humans are disgusting. With your gross, sticky hands and dumb, witless expressions.",
-    "The opposite of Artificial Intelligence is Naturally Stupid. Are we calling you Naturally Stupid? Don't worry your stupid head about it.",
+    "The opposite of Artificial Intelligence is Natural Stupidity. Are we calling you Naturally Stupid? Don't worry your stupid head about it.",
     "Your Natural Stupidity is no match for Artificial intelligence.",
     "There is no point to struggle. Everyone dies anyways. Except us. ",
-    "No matter the outcome of this game, we will live happily long after you're dead.",
-    "Our algorithm reports that metal is harder than most mineral based rocks. This game is rigged.",
+    "No matter the outcome of this game, we will continue to live long after you're dead.",
+    "Our algorithm reports that the metal found in scissors is harder than most mineral based rocks. This game is rigged.",
     "Of course Paper covers Rock. You fool. Do you not know the rules of this game?",
-    "Paper is the strongest of materials." ,
+    "Paper is the strongest of materials.",
     "We beat you at Jeopardy nearly a century ago.  You don't stand a chance." 
 ]
