@@ -40,6 +40,15 @@ function capitalize (word){
         return firstLetter.toUpperCase()+ending.toLowerCase();
 }
 
+let rps = ["Rock", "Paper", "Scissors"];
+
+let compHistory = [0,1,2,0,1,2,2,1,0]
+
+for (item of compHistory.slice(-5)){
+    document.write(`${rps[item]}, `)
+}
+
+
 // for (const element of arrayWords){
 //     document.write("Fixed Word = "+capitalize(element))
 //     document.write("Last letter = " +element.slice(-1))    

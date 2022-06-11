@@ -9,13 +9,20 @@ Possible Fonts:
 */
 
 body{
-    background-color: black;
-    color: #6cbbfa;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+}
+h1{margin:0px;
+    padding:0px;
+    font-size: 18px;
+    text-align: center;
+
 }
 
 .robotVoice{
     font-family: 'Audiowide', serif;
-    font-size: 22px;
+    font-size: 18px;
     color: #9b5cc9;
 }
 
@@ -24,12 +31,36 @@ div{margin:2px;
     font-family: "Raleway", sans-serif;
     border: 1px solid goldenrod;
     font-family: 'Exo', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     /* margin:5px;  */
 }
 
+.proPart1--display{
+    display: flex;
+}
 
-.prologue {display:flex;
+.proPart2--display{
+    display: none;
+}
+
+.proPart3--display{
+    display: none;
+}
+
+.proPart4--display{
+    display: none;
+}
+
+.proPart5--display{
+    display: none;
+}
+
+.gamespace--display{
+    display:none
+}
+
+
+.prologue {
     flex-direction: column;
     justify-content: center;
     align-items:center;
@@ -41,7 +72,8 @@ div{margin:2px;
 
 
 .prologue__text{
-width:95%;
+    font-size: 24px;
+    width:50%;
 /* display: flex;
 flex-direction: column;
 align-items: center; */
@@ -56,20 +88,36 @@ align-items: center; */
 
 }
 
+
+ 
 .gamespace__mainDiv{
+    padding-top: 1em;
     display:flex;
-    justify-content: center;
+    justify-content: left;
+    column-gap: 1em;
 }
 
-.gamespace__leftColumn{
+.leftColumn{
     display: flex;
     flex-direction: column;
 }
 
+.centerColumn{
+    width: 30%;
 
+}
+
+.rightColumn{
+    max-width: 33%;
+    max-height: 33%;
+}
+h3{margin: 0px 0px 5px;
+
+
+}
 .compAvatar{
     width:250px;
-    filter:invert(100)
+    /* filter:invert(100) */
 }
 
 
@@ -79,7 +127,7 @@ button{margin: 10px;
     /* border:0; */
     text-align: center;
     font-family: 'Exo', sans-serif;
-    font-size:22px;
+    font-size:18px;
     border-radius:5px;
     border-color: #9b5cc9;
     text-shadow: 1px 1px 1px #9b5cc9;
