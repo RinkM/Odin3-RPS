@@ -1,3 +1,6 @@
+# From earlier this year. Used to see how I solved this in Python.  
+
+
 
 import time
 import random
