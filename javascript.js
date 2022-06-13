@@ -67,12 +67,18 @@ function buttonPress(number){
     humanTracker(humanChoice);
     updateScoreboard()
     addWin(numericalOutcomes[humanChoice][computerChoice]);
-    humanRounds.textContent = humanRoundWins;
-    compRounds.textContent = compRoundWins;
+    
+    
+
     updateHistory();
     computerResponse()
     roundCounter();
+    megaUpdate()
+
+
+
 }
+
 
 // Prologue 'Press Continue' divs : 
 const proContinue1 = document.querySelector('.proPart1--display');
@@ -157,7 +163,7 @@ let gameOutcomeText = [[
 ],
 [
     "Rock destroys Scissors. The Super Computers win.",
-    "Scissors cut Paper. The Last Free Human Win.",
+    "Scissors cut Paper. The Last Free Human Wins.",
     "It's a Tie. No Winner."
 ]]
 
@@ -177,18 +183,27 @@ scissorsButton.addEventListener('click', ()=>{
 
 function roundCounter(){
     if (humanRoundWins >= numRounds) {
-    resetCounter(humanRoundWins);
-    resetCounter(compRoundWins);
+    humanRoundWins = 0;
+    compRoundWins = 0;
     ++humanGameWins;
+    
 
     } else if (compRoundWins >= numRounds){
-    resetCounter(humanRoundWins);
-    resetCounter(compRoundWins);
+        humanRoundWins = 0;
+        compRoundWins = 0;
     ++computerGameWins;
 
     } else {
     console.log("RoundCounter, no update");
 }}
+
+
+// tried counter = 0.  it didn't work....
+function resetCounter(counter){
+    counter = counter - counter;
+    
+}
+
 
 
 
@@ -226,12 +241,6 @@ function addWin (winner){
         default:
             console.log("Addwin went wrong.");
     }
-}
-
-
-function resetCounter(counter){
-    counter = 0;
-    capturedUpdate()
 }
 
 
@@ -284,6 +293,8 @@ function humanTracker(choice){
         case 2:
             countScissors++
             break;
+        default:
+            console.log("error :humanTracker didn't like what you did.")
     }
 }
 
@@ -314,6 +325,15 @@ function updateHistory(){
     compHistory.textContent = `${compHistory2}`
 }
 
+
+
+function megaUpdate(){
+    humanRounds.textContent = humanRoundWins;
+    compRounds.textContent = compRoundWins;
+    humanGames.textContent = humanGamesWins;
+    compGames.textContent = computerGameWins;
+
+}
 
 
 function computerResponse (){
