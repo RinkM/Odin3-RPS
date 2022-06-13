@@ -177,12 +177,18 @@ function addWin (winner){
     switch(winner){
         case winner == 0:
             loseHumans(1);
-            return compRoundWins = ++compRoundWins;
+            compRoundWins+1;
+            break;
         case winner == 1:
             saveHumans(1);
-            return humanRoundWins = humanRoundWins+1;
+            humanRoundWins+1;
+            break;
         case winner == 2:
-            return ties = ++ties;
+            ties+1;
+            break;
+        default:
+            console.log("Addwin went wrong.");
+            break;
             
     }
 }
