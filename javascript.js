@@ -23,14 +23,18 @@
 // humans act as hackers. can purchase bonuses. help speed up the game.
 // play in the background.   what's the visual for this?
 
+
+
+
+
 // Main function. Runs when a button is clicked. 
-// Will break this up.  Right now, just taping it all together. 
+// I need to break this up.  Right now, just taping it all together. 
 function buttonPress(number){
     computerTurn();
     humanChoice = number;
     humanTracker(humanChoice);
     updateScoreboard()
-    addWin('computer');
+    addWin(numericalOutcomes[humanChoice][computerChoice]);
     humanRounds.textContent = humanRoundWins;
     compRounds.textContent = compRoundWins;
     updateHistory();
@@ -40,7 +44,7 @@ function buttonPress(number){
 
 
 
-// Prologue Buttons : 
+// Prologue 'Press Continue' divs : 
 const proContinue1 = document.querySelector('.proPart1--display');
 const proContinue2 = document.querySelector('.proPart2--display');
 const proContinue3 = document.querySelector('.proPart3--display');
@@ -48,62 +52,63 @@ const proContinue4 = document.querySelector('.proPart4--display');
 
 
 
-// Scoreboard Summaries
+// Scoreboard Story Summaries
 const humanSummary = document.getElementsByClassName("summary__humSum")[0]
 const computerSummary = document.getElementsByClassName("summary__compSum")[0]
 const gameSummary = document.getElementsByClassName("summary__gameSum")[0]
 
-
+// Top Scoreboard numbers and counters. 
 const humanRounds = document.getElementsByClassName("scoreboard__humanRounds")[0]
 const compRounds = document.getElementsByClassName("scoreboard__compRounds")[0]
 const humanGames = document.getElementsByClassName("scoreboard__humanGames")[0]
 const compGames = document.getElementsByClassName("scoreboard__compGames")[0]
+let humanRoundWins = 0;
+let compRoundWins = 0;
+let humanGameWins = 0;
+let computerGameWins= 0;
+let ties = 0;
 
 
 
+
+// Robot Rebuke.   
+//Hope to get this to be dependant on outcomes. Shouldn't be too hard.
 const rebuke = document.getElementsByClassName("robotRebuke")[0]
+
+
 
 const totalCaptured = document.getElementsByClassName("totalCaptured")[0]
 const totalSaved = document.getElementsByClassName("totalSaved")[0]
 const compHistory = document.getElementsByClassName("compHistory")[0]
+let capturedHumans = 10722171375;
+let freeHumans = 1;
+let computerHistory = [];
+
+
+
+// main buttons and human counters.
 const rockButton = document.querySelector('.rockButton');
 const paperButton = document.querySelector('.paperButton');
 const scissorsButton = document.querySelector('.scissorsButton');
+let countRock = 0;
+let countPaper = 0;
+let countScissors = 0;
 
 
-
-// const gameSummary = document.getElementsByClassName("scoreboard__humanScore")[0]
-// const gameSummary = document.getElementsByClassName("scoreboard__compScore")[0]
-// const gameSummary = document.getElementsByClassName("robotRebuke")[0]
-
+//Decisions and rps array
 let computerRandChoice = Math.floor(Math.random()*3); 
 let computerChoice;
 let humanChoice;
 let rps = ["Rock", "Paper", "Scissors"];
 
-// lots of variables and counters. could be held as an object?
-// would that be better?   would make it cleaner...
 
-let computerHistory = [];
-let countRock = 0;
-let countPaper = 0;
-let countScissors = 0;
-let humanRoundWins = 0;
-let compRoundWins = 0;
-let humanSetWins = 0;
-let computerSetWins= 0;
-let ties = 0;
-let capturedHumans = 10722171375;
-let freeHumans = 1;
-let text;
+//game info
+let compHistory2;
+let numRounds = 5
+let numGames = 5
 
-function updateHistory(){
-    text =[]
-    for (item of computerHistory.slice(-10)){
-        text.push(" "+rps[item])
-    }
-    compHistory.textContent = `${text}`
-}
+let coordinates;
+
 
 // 0 = comp win, 1 = human win, 2 = tie game
 let numericalOutcomes = [[
@@ -164,32 +169,32 @@ function capturedUpdate(){
 
 
 function saveHumans(number){
-    capturedHumans - number;
-    freeHumans + number;
+    capturedHumans = capturedHumans - number;
+    freeHumans = freeHumans + number;
+    capturedUpdate()
 }
 
 function loseHumans(number){
-    capturedHumans + number;
-    freeHumans - number;
+    capturedHumans = capturedHumans + number;
+    freeHumans = freeHumans - number;
+    capturedUpdate()
 }
 
 function addWin (winner){
     switch(winner){
-        case winner == 0:
+        case 0:
             loseHumans(1);
-            compRoundWins+1;
+            ++compRoundWins;
             break;
-        case winner == 1:
+        case 1:
             saveHumans(1);
-            humanRoundWins+1;
+            ++humanRoundWins;
             break;
-        case winner == 2:
-            ties+1;
+        case 2:
+            ++ties;
             break;
         default:
             console.log("Addwin went wrong.");
-            break;
-            
     }
 }
 
@@ -198,7 +203,8 @@ function increaseCounter(counter){
 }
 
 function resetCounter(counter){
-    return counter = 0;
+    counter = 0;
+    capturedUpdate()
 }
 
 
@@ -241,6 +247,7 @@ scissorsButton.addEventListener('click', ()=>{
 
 
 function updateScoreboard(){
+    coordinates =  [humanChoice,computerChoice]
     humanSummary.textContent = `The Last Free Human chose ${rps[humanChoice]}`;
     computerSummary.textContent = `The Super Computers chose ${rps[computerChoice]}`;
     gameSummary.textContent = gameOutcomeText[humanChoice][computerChoice];
@@ -279,6 +286,15 @@ function computerTurn(){
         return computerChoice
     }
 };
+
+function updateHistory(){
+    compHistory2 =[]
+    for (item of computerHistory.slice(-10)){
+        compHistory2.push(" "+rps[item])
+    }
+    compHistory.textContent = `${compHistory2}`
+}
+
 
 
 // computerHistory
