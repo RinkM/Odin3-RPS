@@ -1,8 +1,8 @@
 # OdinRPS
 
 Rock, Paper, Scissors
-
-The Odin Project Assignment : https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors
+Assignment 3
+Odin Project : https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors
 
 ## Learning Goals 
 - Create RPS game combining HTML, CSS, and Javascript.
