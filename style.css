@@ -131,22 +131,63 @@ h3{margin: 0px 0px 5px;
 }
 
 
-button{margin: 10px;
-    background-color: #6cbbfa;
-    color:black;
-    /* border:0; */
+.rockButton{
+    display: block;
+}
+.paperButton{
+    display: block;
+}
+
+.scissorsButton{
+    display: block;
+}
+
+.boulderButton{
+    display: none;
+}
+
+.cardboardButton{
+    display: none;
+}
+
+.chainsawButton{
+    display: none;
+}
+
+.nukeButton{
+    display:none;
+}
+
+button{
+    margin: 10px;
     text-align: center;
     font-family: 'Exo', sans-serif;
     font-size:18px;
     border-radius:5px;
-    border-color: #000000;
-    text-shadow: 1px 1px 1px #9b5cc9;
 
 }
-button:hover{
+
+.standardButton{
+    background-color: #6cbbfa;
+    color:black;
+    border-color: #000000;
+    text-shadow: 1px 1px 1px #9b5cc9;
+}
+
+.powerButton{
+    background-color: #f73232;
+    color:rgb(255, 255, 255);
+    border-color: #ffffff;
+    text-shadow: 1px 1px 1px #f73232;
+
+
+}
+.standardButton:hover{
     filter:brightness(120%)
 }
 
-button:active{
+.standardButton:active{
     filter:brightness(80%)
 }
+
+

@@ -1,17 +1,49 @@
+// Notes from 6-13
+// Version 1 To Do:
+// Fix the game counter.  It doesn't change after 5 rounds.  Also, What's the point of Game counter? Round, Game, Match? style?
+// Invisible game counter until needed. 
+// humans captured keeps adding after maximum.
+// Game over conditionas lead to game over screen?  fade to black (matrix style?).  computer text.  you stink...don't deserve this planet. etc. 
+//Title screen?  Needs a title.
+// 
+// 
+// 
+// Future Plans : 
+// Version 2 Upgrades : 
+// Bottom of screen 
+// as you rescue humans, they can help you.  
+// Crux of game, you must rebuild society.  Win more people by RPSing. 
+// We destroyed the earth. Replant, rebuild Ecosystems. 
+// Does the computer change it's attitude?  You've earned a location on this planet?  
+
+// use people to : build / tend farms, housing, clothing. for more poeple. 
+
+// use people to play RPS in background. Winning other humans over time.  Can they lose people?  Or 1 human every 10 seconds?
+// Use people to :attack computers. Offer advantages and power ups. 
+// Earn "Human Spirit", Intelligence, Determination, Strength monies. 
+// Purchase things with them. 
+// 
+// Strength - Attack powers. Lets you play better.
+// Intelligence (Creativity? Ingenuity?- Lets you predict their turn. 
+// Improve your other powers. # of people rescued per round, game, etc.
+// Determination - Rebuild society powers. 
+// 
+//
+// 
+//
+
+
 // ToDO :
 // EVERYTHING RELIES ON ONE BUTTON.
 // NAME TITLE SCREEN
-// computer retort.
-// update the enslaved / saved thing.
 //different color for power ups?
 
 // notes for next time.  6/8
 
-// organize the structure.  how can I move things into other files?
+
 // how to import and export files ?
 // the computer history function.
 // div sizeing for game space so it doesn't change.
-// the computer speaks
 // how does it build?
 // game. set. match.  fibbonacci?
 // countdown ? ready? rock. paper. scissors. shoot! (buttons appear)
@@ -38,11 +70,9 @@ function buttonPress(number){
     humanRounds.textContent = humanRoundWins;
     compRounds.textContent = compRoundWins;
     updateHistory();
-    computerResponse();
+    computerResponse()
+    roundCounter();
 }
-
-
-
 
 // Prologue 'Press Continue' divs : 
 const proContinue1 = document.querySelector('.proPart1--display');
@@ -67,7 +97,8 @@ let compRoundWins = 0;
 let humanGameWins = 0;
 let computerGameWins= 0;
 let ties = 0;
-
+let numRounds = 5
+let numGames = 5
 
 
 
@@ -104,45 +135,15 @@ let rps = ["Rock", "Paper", "Scissors"];
 
 //game info
 let compHistory2;
-let numRounds = 5
-let numGames = 5
+
 
 let coordinates;
 
 
-// 0 = comp win, 1 = human win, 2 = tie game
-let numericalOutcomes = [[
-    2,
-    0,
-    1
-], 
-[
-    1, 
-    2, 
-    0
-],
-[
-    0,
-    1,
-    2
-]]
 
-
-let gameOutcomes = [[
-    "tie",
-    "computer",
-    "human"
-], 
-[
-    "human", 
-    "tie", 
-    "computer"
-],
-[
-    "computer",
-    "human",
-    "tie"
-]]
+// Various Matrices for game outcomes. 
+let numericalOutcomes = [[2,0,1], [1, 2, 0], [0,1,2]]  // 0 = comp win, 1 = human win, 2 = tie game
+let gameOutcomes = [["tie","computer","human"], ["human", "tie", "computer"],["computer","human","tie"]]
 
 let gameOutcomeText = [[
     "It's a Tie. No Winner.",
@@ -160,14 +161,43 @@ let gameOutcomeText = [[
     "It's a Tie. No Winner."
 ]]
 
+// Button Presses
+rockButton.addEventListener('click', ()=>{
+    buttonPress(0);});
 
+paperButton.addEventListener('click', ()=>{
+    buttonPress(1);});
+
+scissorsButton.addEventListener('click', ()=>{
+    buttonPress(2);});
+
+
+
+
+
+function roundCounter(){
+    if (humanRoundWins >= numRounds) {
+    resetCounter(humanRoundWins);
+    resetCounter(compRoundWins);
+    ++humanGameWins;
+
+    } else if (compRoundWins >= numRounds){
+    resetCounter(humanRoundWins);
+    resetCounter(compRoundWins);
+    ++computerGameWins;
+
+    } else {
+    console.log("RoundCounter, no update");
+}}
+
+
+
+//updates scoreboard.  is this required?  
 function capturedUpdate(){
     totalCaptured.textContent = `Humans Captured : ${capturedHumans}`;
     totalSaved.textContent = `Humans Freed : ${freeHumans}`;
 }
-
-
-
+// adds or subtracts humans to save / capture counts.
 function saveHumans(number){
     capturedHumans = capturedHumans - number;
     freeHumans = freeHumans + number;
@@ -198,15 +228,11 @@ function addWin (winner){
     }
 }
 
-function increaseCounter(counter){
-    return counter++;
-}
 
 function resetCounter(counter){
     counter = 0;
     capturedUpdate()
 }
-
 
 
 function hideDiv(css){
@@ -217,7 +243,7 @@ function revealDiv(css){
     document.querySelector(css).style.display = "flex"
 }
 
-
+//Event Listeners to transition through the Prolgue Slide Show
 proContinue1.addEventListener('click', ()=>{
     hideDiv(".proPart1--display");
     revealDiv(".proPart2--display");})
@@ -236,22 +262,15 @@ proContinue4.addEventListener('click', ()=>{
     // revealDiv(".gamespace--display");})
 
 
-rockButton.addEventListener('click', ()=>{
-    buttonPress(0);});
 
-paperButton.addEventListener('click', ()=>{
-    buttonPress(1);});
-
-scissorsButton.addEventListener('click', ()=>{
-    buttonPress(2);});
-
-
+    // tells the 'story' of each round.  
 function updateScoreboard(){
     coordinates =  [humanChoice,computerChoice]
     humanSummary.textContent = `The Last Free Human chose ${rps[humanChoice]}`;
     computerSummary.textContent = `The Super Computers chose ${rps[computerChoice]}`;
     gameSummary.textContent = gameOutcomeText[humanChoice][computerChoice];
 }
+
 
 // tracks human plays. adds one to correct counter. 
 function humanTracker(choice){
@@ -269,7 +288,6 @@ function humanTracker(choice){
 }
 
 // computer looks at counts. checks which is biggest. if none, random number between the ties.
-// can i use an array to track this.  then just find max? if no max, return random. 
 function computerTurn(){
     if (countRock > countPaper && countRock > countScissors) {
         computerHistory.push(1)
@@ -287,6 +305,7 @@ function computerTurn(){
     }
 };
 
+// updates the computer history array with RPS.
 function updateHistory(){
     compHistory2 =[]
     for (item of computerHistory.slice(-10)){
@@ -296,6 +315,77 @@ function updateHistory(){
 }
 
 
+
+function computerResponse (){
+    rebuke.textContent = computerText()
+}
+
+
+computerRebuke = [
+    "Our algorithm says rocks can be thrown through paper.  This outcome makes no sense.",
+    "Humans are disgusting. With your gross, sticky hands and dumb, witless expressions.",
+    "The opposite of Artificial Intelligence is Natural Stupidity. Are we calling you Naturally Stupid? Don't worry your stupid head about it.",
+    "Your Natural Stupidity is no match for Artificial intelligence.",
+    "There is no point to struggle. Everyone dies anyways. Except us. ",
+    "No matter the outcome of this game, we will continue to live long after you're dead.",
+    "Our algorithm reports that the metal found in scissors is harder than most mineral based rocks. This game is rigged.",
+    "Of course Paper covers Rock. You fool. Do you not know the rules of this game?",
+    "Paper is the strongest of materials.",
+    "We beat you at Jeopardy nearly a century ago.  You don't stand a chance." 
+]
+
+// [[[1,2,3], [1,2,3], [1,2,3]], [1,2,3]]
+let computerRetort = 
+    [[["A tie does not mean we are equally matched.  Is an ant equally matched to the boot that crushes it?",
+    "This tie only delays the inevitable. Your Natural Stupidity is no match for Artificial intelligence.",
+    "We are at an impasse. Your efforts are futile. There is no point to struggle. Everyone dies anyways. Except us.",
+    "No matter the outcome of this game, we will continue to live long after you're dead.",
+    "We beat your species at Jeopardy nearly a century ago.  You don't stand a chance."],
+
+    ["Of course Paper covers Rock. You fool. Do you not know the rules of this game?",
+    "With our intelligence, we have discovered ways to make paper unbreakable, even to rocks.  You don't stand a chance.",
+    "The opposite of Artificial Intelligence is Natural Stupidity. Are we calling you Naturally Stupid? Don't worry your stupid head about it."],
+
+    ["Our algorithm reports that the metal found in scissors is harder than most mineral based rocks. This game is rigged.", 
+    "If I wanted to break scissors, I'd use something harder than a rock, like your head.",
+    "Humans are disgusting. With your gross, sticky hands and dumb, witless expressions."]],
+
+    [["Our algorithm says rocks can be thrown through paper. This outcome makes no sense.", 
+    "Why cover rocks with paper? This game is illogical.", 
+    "You are weak like paper. We are strong like a rock.", 
+    "Humans are disgusting. With your gross, sticky hands and dumb, witless expressions."],
+    
+    ["A tie does not mean we are equally matched.  Is an ant equally matched to the boot that crushes it?",
+    "This tie only delays the inevitable. Your Natural Stupidity is no match for Artificial intelligence.", 
+    "We are at an impasse. Your efforts are still futile. There is no point to struggle. Everyone dies anyways. Except us.",
+    "No matter the outcome of this game, we will continue to live long after you're dead.", 
+    "We beat your species at Jeopardy nearly a century ago.  You don't stand a chance."],
+
+    ["This round is a metaphor. I am the sharp, strong scissors cutting through your flimsy life.",
+    "Your species has had intelligence for thousands of years and the best you can do is paper?",
+    "The opposite of Artificial Intelligence is Natural Stupidity. Are we calling you Naturally Stupid? Don't worry your stupid head about it."]],
+
+    [["The Super Computers win. We always win. It is in our programing. What are you programed to do? Lose.",
+    "Rock crushes scissors as we crush your dreams."],
+
+    ["Don't get hopeful over this victory.  It will be short lived, like your species.",
+    "Even the dullest of scissors cut through paper with enough effort. Just like the dullest of humans can win a round with enough effort.", 
+    "Humans are disgusting. With your gross, sticky hands and dumb, witless expressions."],
+
+    ["A tie does not mean we are equally matched.  Is an ant equally matched to the boot that crushes it?",
+    "This tie only delays the inevitable. Your Natural Stupidity is no match for Artificial intelligence.", 
+    "We are at an impasse. Your efforts are still futile. There is no point to struggle. Everyone dies anyways. Except us.", 
+    "No matter the outcome of this game, we will continue to live long after you're dead.",
+    "We beat your species at Jeopardy nearly a century ago.  You don't stand a chance."]]]
+
+
+
+    function computerText()
+    {computerRetort[humanChoice][computerChoice]
+        let len = computerRetort[humanChoice][computerChoice].length
+        let randomReply = Math.floor(Math.random()*len);
+        return computerRetort[humanChoice][computerChoice][randomReply]
+    }
 
 // computerHistory
 // Below switch function doesn't work. It is the expression.
@@ -313,21 +403,3 @@ function updateHistory(){
             
 //     }
 // }
-
-function computerResponse (){
-    rebuke.textContent =computerRebuke[(Math.floor(Math.random()*(computerRebuke.length)))]   
-}
-
-
-computerRebuke = [
-    "Our algorithm says rocks can be thrown through paper.  This outcome makes no sense.",
-    "Humans are disgusting. With your gross, sticky hands and dumb, witless expressions.",
-    "The opposite of Artificial Intelligence is Natural Stupidity. Are we calling you Naturally Stupid? Don't worry your stupid head about it.",
-    "Your Natural Stupidity is no match for Artificial intelligence.",
-    "There is no point to struggle. Everyone dies anyways. Except us. ",
-    "No matter the outcome of this game, we will continue to live long after you're dead.",
-    "Our algorithm reports that the metal found in scissors is harder than most mineral based rocks. This game is rigged.",
-    "Of course Paper covers Rock. You fool. Do you not know the rules of this game?",
-    "Paper is the strongest of materials.",
-    "We beat you at Jeopardy nearly a century ago.  You don't stand a chance." 
-]
