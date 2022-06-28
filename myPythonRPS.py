@@ -1,4 +1,5 @@
-# From earlier this year. Used to see how I solved this in Python.  
+# This file was from Jan 2022. I used to see how I made my first RPS game in Python.  
+
 
 
 
